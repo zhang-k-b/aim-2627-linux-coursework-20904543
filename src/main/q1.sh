@@ -6,5 +6,8 @@ input=${1:?需要输入目录}
 output=${2:?需要输出目录}
 
 # TODO：删除下方提示和 exit 77，再填写你的命令。
-printf '%s\n' 'Q1 尚未实现' >&2
-exit 77
+handover_path=$(cd -- "$input/handover" && pwd -P)
+printf '%s\n' "$handover_path" > "$output/location.txt"
+cat -- "$input/handover/.robot-id" > "$output/robot-id.txt"
+cat -- "$input/notes/welcome.txt" > "$output/welcome.txt"
+
