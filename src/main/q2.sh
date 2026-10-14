@@ -6,5 +6,9 @@ input=${1:?需要输入目录}
 output=${2:?需要输出目录}
 
 # TODO：删除下方提示和 exit 77，再填写你的命令。
-printf '%s\n' 'Q2 尚未实现' >&2
-exit 77
+mkdir -p "$output/sentry_ws/scripts"
+mkdir -p "$output/sentry_ws/config"
+mkdir -p "$output/sentry_ws/logs" && touch "$output/sentry_ws/logs/.keep"
+mkdir -p "$output/sentry_ws/tmp" && touch "$output/sentry_ws/tmp/scratch.txt"
+printf '%s\n' '#!/bin/bash' 'echo "Hello, AIM linux!"'  > "$output/sentry_ws/scripts/hello.sh"
+printf '%s\n' 'robot=sentry' 'mode=training' 'log_level=INFO' > "$output/sentry_ws/config/robot.conf"
